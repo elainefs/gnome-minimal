@@ -1,5 +1,19 @@
 #!/bin/bash
 
+# ================================================
+# Gnome Minimal Install
+# Licensed under the MIT License
+# by Elaine Ferreira <https://github.com/elainefs/gnome-minimal>
+# ================================================
+
+cat <<'EOF'
+  ____ _   _  ___  __  __ _____   __  __ ___ _   _ ___ __  __    _    _     
+ / ___| \ | |/ _ \|  \/  | ____| |  \/  |_ _| \ | |_ _|  \/  |  / \  | |    
+| |  _|  \| | | | | |\/| |  _|   | |\/| || ||  \| || || |\/| | / _ \ | |    
+| |_| | |\  | |_| | |  | | |___  | |  | || || |\  || || |  | |/ ___ \| |___ 
+ \____|_| \_|\___/|_|  |_|_____| |_|  |_|___|_| \_|___|_|  |_/_/   \_\_____|
+EOF
+
 echo "Olá, você está preste a instalar o Gnome Mínimo"
 echo "Deseja continuar? [S/n]"
 read install
