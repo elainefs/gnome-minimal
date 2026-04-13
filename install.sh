@@ -93,7 +93,6 @@ managed=true" >/etc/NetworkManager/NetworkManager.conf
     read vscode
     if [ "$vscode" == "s" -o "$vscode" == "S" -o "$vscode" == "" ]; then
         echo "##### Instalando o Visual Studio Code #####"
-
         wget "https://code.visualstudio.com/sha/download?build=stable&os=linux-deb-x64" -O vscode.deb
         dpkg -i vscode.deb
         apt install -f -y
@@ -159,7 +158,7 @@ EOF
     if [ "$lazydocker" == "s" -o "$lazydocker" == "S" -o "$lazydocker" == "" ]; then
         echo "##### Instalando o LazyDocker #####"
         apt install golang -y
-        curl https://raw.githubusercontent.com/jesseduffield/lazydocker/master/scripts/install_update_linux.sh | bash 
+        curl https://raw.githubusercontent.com/jesseduffield/lazydocker/master/scripts/install_update_linux.sh | bash
     fi
 
     echo -n "Deseja instalar o LazyGit? [S/n] "
