@@ -75,12 +75,6 @@ managed=true" >/etc/NetworkManager/NetworkManager.conf
         apt update -y
         apt install snapd -y
         snap install core
-    fi
-
-    echo -n "Deseja instalar a Snap Store? [S/n] "
-    read snapstore
-    if [ "$snapstore" == "s" -o "$snapstore" == "S" -o "$snapstore" == "" ]; then
-        echo "##### Instalando Snap Store #####"
         snap install snap-store
     fi
 
