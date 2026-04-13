@@ -141,8 +141,8 @@ Architectures: $(dpkg --print-architecture)
 Signed-By: /etc/apt/keyrings/docker.asc
 EOF
         apt update
-        apt install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
         usermod -aG docker $USER
+        apt install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin -y
     fi
 
     echo -n "Deseja instalar o LazyDocker? [S/n] "
@@ -157,7 +157,7 @@ EOF
     read lazygit
     if [ "$lazydocker" == "s" -o "$lazydocker" == "S" -o "$lazydocker" == "" ]; then
         echo "##### Instalando o LazyGit #####"
-        apt install lazygit
+        apt install lazygit -y
     fi
 
     echo -n "Deseja instalar o Virt Manager? [S/n] "
