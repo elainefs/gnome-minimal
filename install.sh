@@ -12,10 +12,11 @@ cat <<'EOF'
 | |  _|  \| | | | | |\/| |  _|   | |\/| || ||  \| || || |\/| | / _ \ | |    
 | |_| | |\  | |_| | |  | | |___  | |  | || || |\  || || |  | |/ ___ \| |___ 
  \____|_| \_|\___/|_|  |_|_____| |_|  |_|___|_| \_|___|_|  |_/_/   \_\_____|
+
 EOF
 
 echo "Olá, você está preste a instalar o Gnome Mínimo"
-echo "Deseja continuar? [S/n]"
+echo -n "Deseja continuar? [S/n] "
 read install
 if [ "$install" == "s" -o "$install" == "S" -o "$install" == "" ]; then
     echo "##### Atualizando seu sistema #####"
@@ -58,7 +59,7 @@ managed=true" >/etc/NetworkManager/NetworkManager.conf
 
     echo "Configurações de rede finalizada!"
 
-    echo "Deseja instalar o suporte a apps Flatpaks? [S/n]"
+    echo -n "Deseja instalar o suporte a apps Flatpaks? [S/n] "
     read flatpak
     if [ "$flatpak" == "s" -o "$flatpak" == "S" -o "$flatpak" == "" ]; then
         echo "##### Instalando suporte a Flatpaks #####"
@@ -67,7 +68,7 @@ managed=true" >/etc/NetworkManager/NetworkManager.conf
         flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
     fi
 
-    echo "Deseja instalar o suporte a apps Snaps? [S/n]"
+    echo -n "Deseja instalar o suporte a apps Snaps? [S/n] "
     read snap
     if [ "$snap" == "s" -o "$snap" == "S" -o "$snap" == "" ]; then
         echo "##### Instalando suporte a Snaps #####"
@@ -76,7 +77,7 @@ managed=true" >/etc/NetworkManager/NetworkManager.conf
         snap install core
     fi
 
-    echo "Deseja instalar a Snap Store? [S/n]"
+    echo -n "Deseja instalar a Snap Store? [S/n] "
     read snapstore
     if [ "$snapstore" == "s" -o "$snapstore" == "S" -o "$snapstore" == "" ]; then
         echo "##### Instalando Snap Store #####"
@@ -85,7 +86,7 @@ managed=true" >/etc/NetworkManager/NetworkManager.conf
 
     echo "##### Configurar ambiente de desenvolvimento #####"
 
-    echo "Deseja instalar o Visual Studio Code? [S/n]"
+    echo -n "Deseja instalar o Visual Studio Code? [S/n] "
     read vscode
     if [ "$vscode" == "s" -o "$vscode" == "S" -o "$vscode" == "" ]; then
         echo "##### Instalando o Visual Studio Code #####"
@@ -96,7 +97,7 @@ managed=true" >/etc/NetworkManager/NetworkManager.conf
         rm vscode.deb
     fi
 
-    echo "Deseja instalar o Filezilla? [S/n]"
+    echo -n "Deseja instalar o Filezilla? [S/n] "
     read filezilla
     if [ "$filezilla" == "s" -o "$filezilla" == "S" -o "$filezilla" == "" ]; then
         echo "##### Instalando o Filezilla #####"
@@ -184,6 +185,7 @@ EOF
         apt install lazygit
     fi
 
+    echo -n "Deseja instalar o Virt Manager? [S/n] "
     read virtmanager
     if [ "$virtmanager" == "s" -o "$virtmanager" == "S" -o "$virtmanager" == "" ]; then
         echo "##### Instalando o Virt Manager #####"
@@ -192,14 +194,14 @@ EOF
 
     echo "##### Instalar ferramentas de manipulação de imagens #####"
 
-    echo "Deseja instalar o Inkscape? [S/n]"
+    echo -n "Deseja instalar o Inkscape? [S/n] "
     read inkscape
     if [ "$inkscape" == "s" -o "$inkscape" == "S" -o "$inkscape" == "" ]; then
         echo "##### Instalando o Inkscape #####"
         apt install --no-install-recommends inkscape -y
     fi
 
-    echo "Deseja instalar o Gimp? [S/n]"
+    echo -n "Deseja instalar o Gimp? [S/n] "
     read gimp
     if [ "$gimp" == "s" -o "$gimp" == "S" -o "$gimp" == "" ]; then
         echo "##### Instalando o Gimp #####"
@@ -207,17 +209,17 @@ EOF
     fi
 
     user=$(users)
-    echo "Deseja adicionar o usuário $user ao grupo sudo? [S/n]"
+    echo -n "Deseja adicionar o usuário $user ao grupo sudo? [S/n] "
     read addusersudo
     if [ "$addusersudo" == "s" -o "$addusersudo" == "S" -o "$addusersudo" == "" ]; then
         usermod -aG sudo $user
         echo "$user adicionado ao grupo sudo"
     fi
 
-    echo "****** Parabéns!!******
-      Seu Gnome Mínimo está instalado.
-Para desfrutar da sua nova instalação você precisa reiniciar o sistema."
-    echo "Reiniciar sistema agora? [S/n]"
+    echo "==== Parabéns!! ===="
+    echo "Seu Gnome Mínimo está instalado."
+    echo "Para desfrutar da sua nova instalação você precisa reiniciar o sistema."
+    echo -n "Reiniciar sistema agora? [S/n] "
     read restart
     if [ "$restart" == "s" -o "$restart" == "S" -o "$restart" == "" ]; then
         systemctl reboot
