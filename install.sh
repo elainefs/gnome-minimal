@@ -177,6 +177,13 @@ EOF
         rm lazydocker
     fi
 
+    echo -n "Deseja instalar o LazyGit? [S/n] "
+    read lazygit
+    if [ "$lazydocker" == "s" -o "$lazydocker" == "S" -o "$lazydocker" == "" ]; then
+        echo "##### Instalando o LazyGit #####"
+        apt install lazygit
+    fi
+
     read virtmanager
     if [ "$virtmanager" == "s" -o "$virtmanager" == "S" -o "$virtmanager" == "" ]; then
         echo "##### Instalando o Virt Manager #####"
