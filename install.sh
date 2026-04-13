@@ -115,7 +115,7 @@ managed=true" >/etc/NetworkManager/NetworkManager.conf
     if [ "$nodejs" == "s" -o "$nodejs" == "S" -o "$nodejs" == "" ]; then
         echo "##### Instalando NVM para Nodejs #####"
         su - $user -c "curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.4/install.sh | bash"
-        nvm install node
+        su - $user -c "bash -c 'source ~/.nvm/nvm.sh && nvm install node'"
     fi
 
     echo -n "Deseja instalar o Python? [S/n] "
