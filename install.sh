@@ -150,11 +150,7 @@ EOF
     if [ "$lazydocker" == "s" -o "$lazydocker" == "S" -o "$lazydocker" == "" ]; then
         echo "##### Instalando o LazyDocker #####"
         apt install golang -y
-        git clone https://github.com/jesseduffield/lazydocker.git
-        cd lazydocker
-        go install
-        cd ..
-        rm lazydocker
+        curl https://raw.githubusercontent.com/jesseduffield/lazydocker/master/scripts/install_update_linux.sh | bash 
     fi
 
     echo -n "Deseja instalar o LazyGit? [S/n] "
