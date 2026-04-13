@@ -82,6 +82,13 @@ managed=true" >/etc/NetworkManager/NetworkManager.conf
 
     user=$(awk -F: '$3 >= 1000 && $1 != "nobody" {print $1}' /etc/passwd)
 
+    echo -n "Deseja instalar o Neovim? [S/n] "
+    read neovim
+    if [ "$neovim" == "s" -o "$neovim" == "S" -o "$neovim" == "" ]; then
+        echo "##### Instalando o Neovim #####"
+        apt install neovim -y
+    fi
+
     echo -n "Deseja instalar o Visual Studio Code? [S/n] "
     read vscode
     if [ "$vscode" == "s" -o "$vscode" == "S" -o "$vscode" == "" ]; then
