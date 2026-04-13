@@ -91,6 +91,13 @@ managed=true" >/etc/NetworkManager/NetworkManager.conf
         tar -C /opt -xzf nvim-linux-x86_64.tar.gz
         echo 'export PATH="$PATH:/opt/nvim-linux-x86_64/bin"' >> /home/$user/.bashrc
         chown $user:$user /home/$user/.bashrc
+
+        echo "Configurando Nerd Fonts..."
+        wget -P /usr/share/fonts/nerd-fonts https://github.com/ryanoasis/nerd-fonts/releases/download/v3.4.0/JetBrainsMono.zip
+        cd /usr/share/fonts/nerd-fonts/
+        unzip JetBrainsMono.zip
+        rm JetBrainsMono.zip
+        fc-cache -f
     fi
 
     echo -n "Deseja instalar o Visual Studio Code? [S/n] "
