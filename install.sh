@@ -119,15 +119,7 @@ managed=true" >/etc/NetworkManager/NetworkManager.conf
         echo 'eval "$(register-python-argcomplete pipx)"' >>~/.bashrc
 
         echo "Configurando o pyenv..."
-        apt install build-essential zlib1g-dev libffi-dev libssl-dev libbz2-dev libreadline-dev libsqlite3-dev liblzma-dev libncurses-dev tk-dev
-        curl https://pyenv.run | bash
-        cat <<'EOF' >>~/.bashrc
-
-# pyenv
-export PYENV_ROOT="$HOME/.pyenv"
-export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init -)"
-EOF
+        curl -fsSL https://pyenv.run | bash
     fi
 
     echo -n "Deseja instalar o Docker? [S/n] "
