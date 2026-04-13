@@ -80,6 +80,8 @@ managed=true" >/etc/NetworkManager/NetworkManager.conf
 
     echo "##### Configurar ambiente de desenvolvimento #####"
 
+    user=$(awk -F: '$3 >= 1000 && $1 != "nobody" {print $1}' /etc/passwd)
+
     echo -n "Deseja instalar o Visual Studio Code? [S/n] "
     read vscode
     if [ "$vscode" == "s" -o "$vscode" == "S" -o "$vscode" == "" ]; then
@@ -141,8 +143,8 @@ Architectures: $(dpkg --print-architecture)
 Signed-By: /etc/apt/keyrings/docker.asc
 EOF
         apt update
-        usermod -aG docker $USER
         apt install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin -y
+        usermod -aG docker $user
     fi
 
     echo -n "Deseja instalar o LazyDocker? [S/n] "
@@ -183,7 +185,6 @@ EOF
         apt install --no-install-recommends gimp -y
     fi
 
-    user=$(users)
     echo -n "Deseja adicionar o usuário $user ao grupo sudo? [S/n] "
     read addusersudo
     if [ "$addusersudo" == "s" -o "$addusersudo" == "S" -o "$addusersudo" == "" ]; then
