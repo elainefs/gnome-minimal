@@ -75,9 +75,14 @@ Durante o processo de instalação você terá a opção de instalar ou não os 
 
 - Suporte a Flatpak
 - Suporte a Snap e Snap Store
+- Neovim
 - Visual Studio Code
 - Filezilla
-- Nodejs
+- Node.js (NVM)
+- Python (pipx, pyenv)
+- Docker
+- LazyDocker
+- LazyGit
 - Virt Manager
 - Inkscape
 - Gimp
