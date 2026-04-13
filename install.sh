@@ -118,7 +118,30 @@ export PATH="$NVM_DIR/versions/node/$(nvm version)/bin:$PATH"
 EOF
     fi
 
-    echo "Deseja instalar o Virt Manager? [S/n]"
+    echo -n "Deseja instalar o Python? [S/n] "
+    read python
+    echo "Pacotes: python3, python3-pip, python3-venv, pipx e pyenv"
+    if [ "$python" == "s" -o "$python" == "S" -o "$python" == "" ]; then
+        echo "##### Instalando o Python #####"
+        apt install python3 python3-pip python3-venv pipx -y
+
+        echo "Configurando pipx..."
+        pipx ensurepath --force
+        pipx completions
+        echo 'eval "$(register-python-argcomplete pipx)"' >>~/.bashrc
+
+        echo "Configurando o pyenv..."
+        apt install build-essential zlib1g-dev libffi-dev libssl-dev libbz2-dev libreadline-dev libsqlite3-dev liblzma-dev libncurses-dev tk-dev
+        curl https://pyenv.run | bash
+        cat <<'EOF' >>~/.bashrc
+
+# pyenv
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init -)"
+EOF
+    fi
+
     read virtmanager
     if [ "$virtmanager" == "s" -o "$virtmanager" == "S" -o "$virtmanager" == "" ]; then
         echo "##### Instalando o Virt Manager #####"
