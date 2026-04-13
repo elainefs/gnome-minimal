@@ -103,11 +103,19 @@ managed=true" >/etc/NetworkManager/NetworkManager.conf
         apt install filezilla -y
     fi
 
-    echo "Deseja instalar o Nodejs? [S/n]"
+    echo -n "Deseja instalar o NVM para Nodejs? [S/n] "
     read nodejs
     if [ "$nodejs" == "s" -o "$nodejs" == "S" -o "$nodejs" == "" ]; then
-        echo "##### Instalando o Nodejs #####"
-        apt install nodejs -y
+        echo "##### Instalando NVM para Nodejs #####"
+        curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/master/install.sh | bash
+        cat <<'EOF' >>~/.bashrc
+
+# NVM
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
+export PATH="$NVM_DIR/versions/node/$(nvm version)/bin:$PATH"
+EOF
     fi
 
     echo "Deseja instalar o Virt Manager? [S/n]"
