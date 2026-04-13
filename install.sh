@@ -142,6 +142,41 @@ eval "$(pyenv init -)"
 EOF
     fi
 
+    echo -n "Deseja instalar o Docker? [S/n] "
+    read docker
+    if [ "$docker" == "s" -o "$docker" == "S" -o "$docker" == "" ]; then
+        echo "##### Instalando o Docker #####"
+        apt update
+        apt install ca-certificates curl -y
+        install -m 0755 -d /etc/apt/keyrings
+        curl -fsSL https://download.docker.com/linux/debian/gpg -o /etc/apt/keyrings/docker.asc
+        chmod a+r /etc/apt/keyrings/docker.asc
+
+        tee /etc/apt/sources.list.d/docker.sources <<EOF
+Types: deb
+URIs: https://download.docker.com/linux/debian
+Suites: $(. /etc/os-release && echo "$VERSION_CODENAME")
+Components: stable
+Architectures: $(dpkg --print-architecture)
+Signed-By: /etc/apt/keyrings/docker.asc
+EOF
+        apt update
+        apt install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+        usermod -aG docker $USER
+    fi
+
+    echo -n "Deseja instalar o LazyDocker? [S/n] "
+    read lazydocker
+    if [ "$lazydocker" == "s" -o "$lazydocker" == "S" -o "$lazydocker" == "" ]; then
+        echo "##### Instalando o LazyDocker #####"
+        apt install golang -y
+        git clone https://github.com/jesseduffield/lazydocker.git
+        cd lazydocker
+        go install
+        cd ..
+        rm lazydocker
+    fi
+
     read virtmanager
     if [ "$virtmanager" == "s" -o "$virtmanager" == "S" -o "$virtmanager" == "" ]; then
         echo "##### Instalando o Virt Manager #####"
