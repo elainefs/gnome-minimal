@@ -86,7 +86,11 @@ managed=true" >/etc/NetworkManager/NetworkManager.conf
     read neovim
     if [ "$neovim" == "s" -o "$neovim" == "S" -o "$neovim" == "" ]; then
         echo "##### Instalando o Neovim #####"
-        apt install neovim -y
+        curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim-linux-x86_64.tar.gz
+        rm -rf /opt/nvim-linux-x86_64
+        tar -C /opt -xzf nvim-linux-x86_64.tar.gz
+        echo 'export PATH="$PATH:/opt/nvim-linux-x86_64/bin"' >> /home/$user/.bashrc
+        chown $user:$user /home/$user/.bashrc
     fi
 
     echo -n "Deseja instalar o Visual Studio Code? [S/n] "
