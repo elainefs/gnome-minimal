@@ -33,7 +33,7 @@ if [ "$install" == "s" -o "$install" == "S" -o "$install" == "" ]; then
 
     echo "##### Instalação dos pacotes essenciais #####"
 
-    apt install --no-install-recommends gdm3 nautilus tilix gedit evince gnome-tweaks gnome-control-center gnome-calculator network-manager gnome-software gnome-shell-extensions gnome-shell-extension-manager seahorse libsecret-1-0 libsecret-1-dev gparted pulseaudio shotwell vlc gnome-sushi ffmpegthumbnailer libgdk-pixbuf2.0-bin ntfs-3g dosfstools wget curl gvfs-backends mtp-tools build-essential libmagic1 sudo firefox-esr vim fzf ripgrep tmux jq xdg-utils -y
+    apt install --no-install-recommends gdm3 nautilus tilix gedit evince gnome-tweaks gnome-control-center gnome-calculator network-manager gnome-software gnome-shell-extensions gnome-shell-extension-manager seahorse libsecret-1-0 libsecret-1-dev gparted pulseaudio shotwell vlc gnome-sushi ffmpegthumbnailer libgdk-pixbuf2.0-bin ntfs-3g dosfstools wget curl gvfs-backends mtp-tools build-essential libmagic1 sudo firefox-esr vim fzf ripgrep tmux jq xdg-utils bash-completion -y
 
     echo "--- Instalação dos pacotes essenciais Finalizada ---"
 
