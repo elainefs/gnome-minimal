@@ -98,19 +98,12 @@ managed=true" >/etc/NetworkManager/NetworkManager.conf
         apt install filezilla -y
     fi
 
-    echo -n "Deseja instalar o NVM para Nodejs? [S/n] "
+    echo -n "Deseja instalar o NVM (Nodejs)? [S/n] "
     read nodejs
     if [ "$nodejs" == "s" -o "$nodejs" == "S" -o "$nodejs" == "" ]; then
         echo "##### Instalando NVM para Nodejs #####"
-        curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/master/install.sh | bash
-        cat <<'EOF' >>~/.bashrc
-
-# NVM
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
-export PATH="$NVM_DIR/versions/node/$(nvm version)/bin:$PATH"
-EOF
+        curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.4/install.sh | bash
+        nvm install node
     fi
 
     echo -n "Deseja instalar o Python? [S/n] "
