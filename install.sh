@@ -110,7 +110,7 @@ managed=true" >/etc/NetworkManager/NetworkManager.conf
     read nodejs
     if [ "$nodejs" == "s" -o "$nodejs" == "S" -o "$nodejs" == "" ]; then
         echo "##### Instalando NVM para Nodejs #####"
-        curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.4/install.sh | bash
+        su - $user -c "curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.4/install.sh | bash"
         nvm install node
     fi
 
@@ -127,7 +127,7 @@ managed=true" >/etc/NetworkManager/NetworkManager.conf
         echo 'eval "$(register-python-argcomplete pipx)"' >>~/.bashrc
 
         echo "Configurando o pyenv..."
-        curl -fsSL https://pyenv.run | bash
+        su - $user -c "curl -fsSL https://pyenv.run | bash"
     fi
 
     echo -n "Deseja instalar o Docker? [S/n] "
@@ -158,7 +158,7 @@ EOF
     if [ "$lazydocker" == "s" -o "$lazydocker" == "S" -o "$lazydocker" == "" ]; then
         echo "##### Instalando o LazyDocker #####"
         apt install golang -y
-        curl https://raw.githubusercontent.com/jesseduffield/lazydocker/master/scripts/install_update_linux.sh | bash
+        su - $user -c "curl https://raw.githubusercontent.com/jesseduffield/lazydocker/master/scripts/install_update_linux.sh | bash"
     fi
 
     echo -n "Deseja instalar o LazyGit? [S/n] "
